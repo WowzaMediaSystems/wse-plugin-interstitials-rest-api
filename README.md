@@ -13,8 +13,8 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 * Run `./gradlew build` to build the jar file.
 
 ## Install
-* copy `wse-plugin-cloud-sgai-rest-api-x.x.x.jar` into lib directory 
-* add HTTPProvider to `VHost.xml`
+* Copy `wse-plugin-cloud-sgai-rest-api-x.x.x.jar` into lib directory 
+* Add HTTPProvider to `VHost.xml`
 ```xml
 
 <HTTPProvider>
@@ -23,7 +23,7 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
     <AuthenticationMethod>none</AuthenticationMethod>
 </HTTPProvider>
 ```  
-* add Property to `VHost.xml`
+* Add Property to `VHost.xml`
 ```xml
 <Property>
     <Name>optionsCORSHeadersAddMain</Name>
