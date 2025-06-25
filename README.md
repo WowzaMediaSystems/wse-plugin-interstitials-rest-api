@@ -1,5 +1,16 @@
-# Ads Inserter
-This module provides a rest API to added HLS Interstitials
+# Wowza SGAI REST API
+The **SGAI REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to added HLS Interstitials with a rest api
+
+## Prerequisites
+* Wowza Streaming Engine™ 4.9.4 or later is required.
+* Java 21.
+* For the Azure Speech to Text module, you will also need an Azure account with the Speech service enabled.
+* For the Whisper module, you will need a Whisper server configured.
+
+## Build instructions
+* Clone repo to local filesystem.
+* Update `wseLibDir` variable in the `gradle.properties` file to point to local _Wowza Streaming Engine_ `lib` folder.
+* Run `./gradlew build` to build the jar file.
 
 ## Install
 * copy `wse-plugin-cloud-ad-inserter-x.x.x.jar` into lib directory 
@@ -7,8 +18,8 @@ This module provides a rest API to added HLS Interstitials
 ```xml
 
 <HTTPProvider>
-    <BaseClass>com.wowza.wms.plugin.adinserter.httpprovider.HTTPProviderAdInserter</BaseClass>
-    <RequestFilters>v1/ads/*</RequestFilters>
+    <BaseClass>com.wowza.wms.plugin.sgairestapi.http.HTTPProviderSgaiRestApi</BaseClass>
+    <RequestFilters>v1/sgai/*</RequestFilters>
     <AuthenticationMethod>none</AuthenticationMethod>
 </HTTPProvider>
 ```  
@@ -25,7 +36,7 @@ This module provides a rest API to added HLS Interstitials
 <Module>
     <Name>moduleAdInsertion</Name>
     <Description>moduleAdInsertion</Description>
-    <Class>com.wowza.wms.plugin.adinserter.module.ModuleAdInserter</Class>
+    <Class>com.wowza.wms.plugin.sgairestapi.module.ModuleSgaiRestApi</Class>
 </Module>
 ```
 * Add HLS datetime to HTTPStreamer Properties in each application xml
@@ -66,7 +77,7 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
   "start_date": "+10",
   "duration": 30.0,
   "asset_list": "https://myads.example.com/ad1.m3u8"  
-  }' http://127.0.0.1:1935/v1/ads/applications/live/streams/mystream
+  }' http://127.0.0.1:1935/v1/sgai/applications/live/streams/mystream
 ```
 
 ## HLS Output Example

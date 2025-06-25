@@ -1,14 +1,14 @@
-package com.wowza.wms.plugin.adinserter.module;
+package com.wowza.wms.plugin.sgairestapi.module;
 
 import com.wowza.wms.application.IApplicationInstance;
 import com.wowza.wms.logging.*;
 import com.wowza.wms.module.ModuleBase;
-import com.wowza.wms.plugin.adinserter.LiveStreamPacketizerListener;
+import com.wowza.wms.plugin.sgairestapi.LiveStreamPacketizerListener;
 import com.wowza.wms.server.ReleaseInfo;
 
-public class ModuleAdInserter extends ModuleBase
+public class ModuleSgaiRestApi extends ModuleBase
 {
-	private static final Class<ModuleAdInserter> CLASS = ModuleAdInserter.class;
+	private static final Class<ModuleSgaiRestApi> CLASS = ModuleSgaiRestApi.class;
 
 	public static final String MODULE_NAME = CLASS.getSimpleName();
 	public static final String MODULE_VERSION = ReleaseInfo.getVersion();

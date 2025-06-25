@@ -3,7 +3,7 @@
  * This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
  */
 
-package com.wowza.wms.plugin.adinserter;
+package com.wowza.wms.plugin.sgairestapi;
 
 import com.wowza.util.BufferUtils;
 import com.wowza.wms.amf.*;

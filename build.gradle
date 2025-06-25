@@ -7,7 +7,7 @@ plugins {
     id "com.gorylenko.gradle-git-properties" version "2.4.0-rc1"
 }
 
-group 'com.wowza.wms.plugin.adinserter'
+group 'com.wowza.wms.plugin.sgairestapi'
 version '1.0.0'
 
 java {
