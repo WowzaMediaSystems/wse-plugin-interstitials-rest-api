@@ -13,7 +13,7 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 * Run `./gradlew build` to build the jar file.
 
 ## Install
-* copy `wse-plugin-cloud-ad-inserter-x.x.x.jar` into lib directory 
+* copy `wse-plugin-cloud-sgai-rest-api-x.x.x.jar` into lib directory 
 * add HTTPProvider to `VHost.xml`
 ```xml
 
@@ -50,7 +50,7 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 
 ## API
 ### API patterns is
-* `/v1/ads/applications/{appName}/streams/{streamName}`
+* `/v1/sgai/applications/{appName}/streams/{streamName}`
 
 
 ### API supports methods/verbs
