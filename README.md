@@ -4,8 +4,6 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 ## Prerequisites
 * Wowza Streaming Engine™ 4.9.4 or later is required.
 * Java 21.
-* For the Azure Speech to Text module, you will also need an Azure account with the Speech service enabled.
-* For the Whisper module, you will need a Whisper server configured.
 
 ## Build instructions
 * Clone repo to local filesystem.
@@ -34,8 +32,8 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 * Add module to each application xml:
 ```xml
 <Module>
-    <Name>moduleAdInsertion</Name>
-    <Description>moduleAdInsertion</Description>
+    <Name>ModuleSgaiRestApi</Name>
+    <Description>ModuleSgaiRestApi</Description>
     <Class>com.wowza.wms.plugin.sgairestapi.module.ModuleSgaiRestApi</Class>
 </Module>
 ```
