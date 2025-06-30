@@ -69,12 +69,12 @@ A json object can be passed into the video stream
 
 
 ## Examples/Demo
-After the module has been built, start WSE and WSEM with module with the docker compose file that includes pre-configured WSE and sample appications `live` and `simu-live`
+After the module has been built, start WSE and WSEM with the docker compose file that includes a pre-configured WSE and sample appications `live` and `simu-live`
 
 ```
 docker compose up
 ```
-Insert an HLS Interstial (10s ad break, +5 seconds from now)
+Insert an HLS Interstial (10s ad break, +5 seconds from now) to simu-live video
 
 ```shell
 curl -X POST  -H "Content-Type: application/json"  -d '{
