@@ -130,7 +130,12 @@ public class HTTPProviderSgaiRestApi extends HTTPProvider2Base
 		dateRange += "CLASS=\"com.apple.hls.interstitial\",";
 		dateRange += "START-DATE=\"" + fastDateFormat.format(drd.startDate) + "\",";
 		dateRange += "DURATION=" + String.format("%.3f",drd.duration) + ",";
-		dateRange += "X-ASSET-LIST=\"" + drd.assetList + "\",";
+		if(drd.assetList != null) {
+			dateRange += "X-ASSET-LIST=\"" + drd.assetList + "\",";
+		}
+		if(drd.assetUri != null) {
+			dateRange += "X-ASSET-URI=\"" + drd.assetUri + "\",";
+		}
 		dateRange += "X-RESUME-OFFSET=" + drd.resumeOffset + ",";
 		dateRange += "X-RESTRICT=\"" + drd.restrict + "\"";
 
@@ -191,10 +196,11 @@ public class HTTPProviderSgaiRestApi extends HTTPProvider2Base
 	}
 	public class DataRangeData
 	{
-		public String id;
+		public String id = null;
 		public Date startDate;
 		public double duration;
-		public String assetList;
+		public String assetUri = null;
+		public String assetList = null;
 		public int resumeOffset;
 		public String restrict;
 
@@ -253,9 +259,11 @@ public class HTTPProviderSgaiRestApi extends HTTPProvider2Base
 			{
 				this.assetList = obj.textValue();
 			}
-			else
+
+			obj	= actualObj.get("asset_uri");
+			if (obj != null)
 			{
-				this.assetList = "http://localhost:3000/api/asset-list?vasturl=http://localhost:3000/samples/sample-api-vastid-live/vast-sample.xml&test=false&user=abc&content=123";
+				this.assetUri = obj.textValue();
 			}
 
 			obj	= actualObj.get("resume_offset");

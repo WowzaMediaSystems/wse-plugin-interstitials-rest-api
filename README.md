@@ -62,21 +62,41 @@ A json object can be passed into the video stream
 | id            | ID of the Ad                                                  |
 | start_date    | Absolute start date in ISO8601 format, or +<seconds> from now |
 | duration      | Duration of the add                                           |
-| asset_list    | url for the assets                                            |
+| asset_list    | url for the assets list                                            |
+| asset_uri     | url for the single assets                                            |
 | resume_offset | seconds to offset resume                                      |
 | restrict      | SKIP,JUMP                                                     |
 
 
-## curl Examples
+## Examples/Demo
+After the module has been built, start WSE and WSEM with module with the docker compose file that includes pre-configured WSE and sample appications `live` and `simu-live`
+
+```
+docker compose up
+```
+Insert an HLS Interstial (10s ad break, +5 seconds from now)
 
 ```shell
 curl -X POST  -H "Content-Type: application/json"  -d '{
   "id": "ad1",
-  "start_date": "+10",
-  "duration": 30.0,
-  "asset_list": "https://myads.example.com/ad1.m3u8"  
-  }' http://127.0.0.1:1935/v1/sgai/applications/live/streams/mystream
+  "start_date": "+5",
+  "duration": 10.0,
+  "asset_uri": "https://wv-cdn-00-00.flowplayer.com/7bb18344-08f9-4c1e-84a7-80c1007aa99b/cmaf/58080f44-c657-4e81-938c-ebcb8a29ffaa/playlist.m3u8"  
+  }' http://localhost/v1/sgai/applications/simu-live/streams/myStream
 ```
+
+Test Playback (using hlsjs)
+
+```
+https://hlsjs.video-dev.org/demo/?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8
+```
+
+See the HLS Interstial
+
+```
+curl http://localhost/simu-live/myStream/chunklist_w2003968828.m3u8
+```
+
 
 ## HLS Output Example
 ```
@@ -86,7 +106,7 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
 #EXT-X-MEDIA-SEQUENCE:60897 
 #EXT-X-DISCONTINUITY-SEQUENCE:0 
 #EXT-X-PROGRAM-DATE-TIME:2025-02-13T17:03:19.368Z
-#EXT-X-DATERANGE:ID="ad1",CLASS="com.apple.hls.interstitial",START-DATE="2025-02-13T17:03:29.794Z",DURATION=30.000,X-ASSET-LIST="https://myads.example.com/ad1.m3u8" 
+#EXT-X-DATERANGE:ID="ad1-5",CLASS="com.apple.hls.interstitial",START-DATE="2025-06-30T20:14:26.497Z",DURATION=10.000,X-ASSET-URI="https://wv-cdn-00-00.flowplayer.com/7bb18344-08f9-4c1e-84a7-80c1007aa99b/cmaf/58080f44-c657-4e81-938c-ebcb8a29ffaa/playlist.m3u8",X-RESUME-OFFSET=0,X-RESTRICT="SKIP,JUMP" 
 #EXTINF:4.0, 
 media_10.ts
 #EXTINF:4.0, 

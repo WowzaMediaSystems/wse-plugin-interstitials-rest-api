@@ -51,12 +51,12 @@ public class LiveStreamPacketizerListener extends LiveStreamPacketizerActionNoti
 				LiveStreamPacketizerCupertinoDataHandler dataHandler =  new LiveStreamPacketizerCupertinoDataHandler((LiveStreamPacketizerCupertino) liveStreamPacketizer, stream);
 				((LiveStreamPacketizerCupertino)liveStreamPacketizer).setDataHandler(dataHandler);
 
-				logger.info("Adding stuff to streamName:" + streamName);
-				String queryParam = "";
-				queryParam = "EXT-X-DEFINE:QUERYPARAM=\"user\"";
-				((LiveStreamPacketizerCupertino)liveStreamPacketizer).getUserManifestHeaders().addHeader(queryParam);
-				queryParam = "EXT-X-DEFINE:QUERYPARAM=\"content\"";
-				((LiveStreamPacketizerCupertino)liveStreamPacketizer).getUserManifestHeaders().addHeader(queryParam);
+				// logger.info("Adding stuff to streamName:" + streamName);
+				// String queryParam = "";
+				// queryParam = "EXT-X-DEFINE:QUERYPARAM=\"user\"";
+				// ((LiveStreamPacketizerCupertino)liveStreamPacketizer).getUserManifestHeaders().addHeader(queryParam);
+				// queryParam = "EXT-X-DEFINE:QUERYPARAM=\"content\"";
+				// ((LiveStreamPacketizerCupertino)liveStreamPacketizer).getUserManifestHeaders().addHeader(queryParam);
 
 			}
 			else if (liveStreamPacketizer instanceof LiveStreamPacketizerMPEGDash)
