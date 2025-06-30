@@ -1,9 +1,10 @@
-# Wowza SGAI REST API
-The **SGAI REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to added HLS Interstitials with a rest api
+# Wowza SGAI (Server Guided Ad Insertion) REST API
+The **SGAI REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to add HLS Interstitials with a REST api to a live video feed
 
 ## Prerequisites
 * Wowza Streaming Engine™ 4.9.4 or later is required.
 * Java 21.
+* Gradle (to build).
 
 ## Build instructions
 * Clone repo to local filesystem.
