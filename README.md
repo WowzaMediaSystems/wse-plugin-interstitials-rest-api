@@ -1,1 +1,1 @@
-# wse-plugin-sgai-rest-api
+# wse-plugin-interstitials-rest-api
