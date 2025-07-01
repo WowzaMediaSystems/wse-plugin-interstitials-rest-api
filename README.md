@@ -1,7 +1,7 @@
-# Wowza HLS Interstials REST API 
-The **HLS Interstials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to add HLS Interstitials with a REST api to a live video feed by adding the #EXT-DATE-RANGE tag to the HLS manifest.
+# Wowza HLS Interstitials REST API 
+The **HLS Interstitials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to add HLS Interstitials with a REST api to a live video feed by adding the #EXT-DATE-RANGE tag to the HLS manifest.
 
-For more details on HLS Interstials see: [Getting Started with HLS Interstitials](https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf)
+For more details on HLS Interstitials see: [Getting Started with HLS Interstitials](https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf)
 
 ## Prerequisites
 * Wowza Streaming Engine™ 4.9.4 or later is required.
