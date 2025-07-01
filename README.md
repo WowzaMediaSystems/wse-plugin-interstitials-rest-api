@@ -84,7 +84,7 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
   "id": "ad1",
   "start_date": "+5",
   "duration": 10.0,
-  "asset_uri": "https://wv-cdn-00-00.flowplayer.com/7bb18344-08f9-4c1e-84a7-80c1007aa99b/cmaf/58080f44-c657-4e81-938c-ebcb8a29ffaa/playlist.m3u8"  
+  "asset_uri": "https://wv-cdn-00-00.flowplayer.com/7bb18344-08f9-4c1e-84a7-80c1007aa99b/cmaf/6089d839-d699-424b-b914-445152e25115/playlist.m3u8"  
   }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
 ```
 
