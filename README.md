@@ -1,5 +1,6 @@
-# Wowza SGAI (Server Guided Ad Insertion) REST API
-The **SGAI REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to add HLS Interstitials with a REST api to a live video feed
+# Wowza HLS Interstials REST API 
+The **HLS Interstials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to add HLS Interstitials with a REST api to a live video feed by adding the #EXT-DATE-RANGE tag.
+[Getting Started with HLS Interstitials](https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf)
 
 ## Prerequisites
 * Wowza Streaming Engine™ 4.9.4 or later is required.
@@ -12,13 +13,13 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 * Run `./gradlew build` to build the jar file.
 
 ## Install
-* Copy `wse-plugin-cloud-sgai-rest-api-x.x.x.jar` into lib directory 
+* Copy `wse-plugin-cloud-interstitials-rest-api-x.x.x.jar` into lib directory 
 * Add HTTPProvider to `VHost.xml`
 ```xml
 
 <HTTPProvider>
-    <BaseClass>com.wowza.wms.plugin.sgairestapi.http.HTTPProviderSgaiRestApi</BaseClass>
-    <RequestFilters>v1/sgai/*</RequestFilters>
+    <BaseClass>com.wowza.wms.plugin.interstitialsrestapi.http.HTTPProviderInterstitialsRestApi</BaseClass>
+    <RequestFilters>v1/interstitials/*</RequestFilters>
     <AuthenticationMethod>none</AuthenticationMethod>
 </HTTPProvider>
 ```  
@@ -33,9 +34,9 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 * Add module to each application xml:
 ```xml
 <Module>
-    <Name>ModuleSgaiRestApi</Name>
-    <Description>ModuleSgaiRestApi</Description>
-    <Class>com.wowza.wms.plugin.sgairestapi.module.ModuleSgaiRestApi</Class>
+    <Name>ModuleInterstitialsRestApi</Name>
+    <Description>ModuleInterstitialsRestApi</Description>
+    <Class>com.wowza.wms.plugin.interstitialsrestapi.module.ModuleInterstitialsRestApi</Class>
 </Module>
 ```
 * Add HLS datetime to HTTPStreamer Properties in each application xml
@@ -49,7 +50,7 @@ The **SGAI REST API** module for [Wowza Streaming Engine™ media server softwar
 
 ## API
 ### API patterns is
-* `/v1/sgai/applications/{appName}/streams/{streamName}`
+* `/v1/interstitials/applications/{appName}/streams/{streamName}`
 
 
 ### API supports methods/verbs
@@ -83,7 +84,7 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
   "start_date": "+5",
   "duration": 10.0,
   "asset_uri": "https://wv-cdn-00-00.flowplayer.com/7bb18344-08f9-4c1e-84a7-80c1007aa99b/cmaf/58080f44-c657-4e81-938c-ebcb8a29ffaa/playlist.m3u8"  
-  }' http://localhost/v1/sgai/applications/simu-live/streams/myStream
+  }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
 ```
 
 Test Playback (using hlsjs)

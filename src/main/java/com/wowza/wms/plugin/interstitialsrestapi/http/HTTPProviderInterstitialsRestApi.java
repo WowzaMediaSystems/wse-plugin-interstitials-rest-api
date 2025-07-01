@@ -3,7 +3,7 @@
  * This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
  */
 
-package com.wowza.wms.plugin.sgairestapi.http;
+package com.wowza.wms.plugin.interstitialsrestapi.http;
 
 import com.fasterxml.jackson.core.*;
 import com.wowza.util.SystemUtils;
@@ -14,7 +14,7 @@ import com.wowza.wms.http.IHTTPRequest;
 import com.wowza.wms.http.IHTTPResponse;
 import com.wowza.wms.httpstreamer.cupertinostreaming.livestreampacketizer.LiveStreamPacketizerCupertino;
 import com.wowza.wms.logging.*;
-import com.wowza.wms.plugin.sgairestapi.ReleaseInfo;
+import com.wowza.wms.plugin.interstitialsrestapi.ReleaseInfo;
 import com.wowza.wms.stream.IMediaStream;
 import com.wowza.wms.stream.livepacketizer.ILiveStreamPacketizer;
 import com.wowza.wms.vhost.IVHost;
@@ -27,7 +27,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class HTTPProviderSgaiRestApi extends HTTPProvider2Base
+public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 {
 	public static final String DATEFORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 	public FastDateFormat fastDateFormat;
@@ -35,10 +35,10 @@ public class HTTPProviderSgaiRestApi extends HTTPProvider2Base
 	Map<String,Timer> cancelDateRange = new HashMap<String, Timer>();
 	static WMSLogger log = null;
 
-	public HTTPProviderSgaiRestApi()
+	public HTTPProviderInterstitialsRestApi()
 	{
-		log = WMSLoggerFactory.getLogger(HTTPProviderSgaiRestApi.class);
-		log.info("Creating HTTPProvider SgaiRestApi v"+ ReleaseInfo.getVersion());
+		log = WMSLoggerFactory.getLogger(HTTPProviderInterstitialsRestApi.class);
+		log.info("Creating HTTPProvider InterstitialsRestApi v"+ ReleaseInfo.getVersion());
 		fastDateFormat = FastDateFormat.getInstance(DATEFORMAT, SystemUtils.gmtTimeZone, Locale.US);
 	}
 	//
@@ -111,7 +111,7 @@ public class HTTPProviderSgaiRestApi extends HTTPProvider2Base
 				sendResponse(ihttpResponse, "Error:" + e.getMessage(), 500);
 			}
 		}
-		// curl -X POST "http://localhost:1935/v1/sgai/applications/simu-live/streams/myStream -d '{ "id":"foo" }'
+		// curl -X POST "http://localhost:1935/v1/interstitials/applications/simu-live/streams/myStream -d '{ "id":"foo" }'
 
 	}
 

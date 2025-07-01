@@ -58,8 +58,8 @@
 						<PasswordEncodingScheme>none</PasswordEncodingScheme>
 					</HTTPProvider>
 					<HTTPProvider>
-					    <BaseClass>com.wowza.wms.plugin.sgairestapi.http.HTTPProviderSgaiRestApi</BaseClass>
-					    <RequestFilters>v1/sgai/*</RequestFilters>
+					    <BaseClass>com.wowza.wms.plugin.interstitialsrestapi.http.HTTPProviderInterstitialsRestApi</BaseClass>
+					    <RequestFilters>v1/interstitials/*</RequestFilters>
 					    <AuthenticationMethod>none</AuthenticationMethod>
 					</HTTPProvider>					
 				</HTTPProviders>
@@ -341,7 +341,6 @@
 			<MaximumSetBufferTime>60000</MaximumSetBufferTime>
 		</Application>
 		<StartStartupStreams>true</StartStartupStreams>
-
 		<Manager>
 			<TestPlayer>
 				<IpAddress>wse-trial.wowza.com</IpAddress>

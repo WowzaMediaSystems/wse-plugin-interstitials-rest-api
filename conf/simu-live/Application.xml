@@ -200,6 +200,17 @@
 					<Value>true</Value>
 					<Type>Boolean</Type>
 				</Property>
+				<Property>
+					<Name>CORSDynamicEnabled</Name>
+					<Value>true</Value>
+					<Type>Boolean</Type>
+				</Property>
+				<Property>
+					<Name>CORSUseHostname</Name>
+					<Value>true</Value>
+					<Type>Boolean</Type>
+				</Property>
+				
 			</Properties>
 		</HTTPStreamer>
 		<Manager>
@@ -237,9 +248,9 @@
 				<Class>com.wowza.wms.security.ModuleCoreSecurity</Class>
 			</Module>
 			<Module>
-				<Name>ModuleSgaiRestApi</Name>
-				<Description>ModuleSgaiRestApi</Description>
-				<Class>com.wowza.wms.plugin.sgairestapi.module.ModuleSgaiRestApi</Class>
+				<Name>ModuleInterstitialsRestApi</Name>
+				<Description>ModuleInterstitialsRestApi</Description>
+				<Class>com.wowza.wms.plugin.interstitialsrestapi.module.ModuleInterstitialsRestApi</Class>
 			</Module>
 		</Modules>
 		<!-- Properties defined here will be added to the IApplication.getProperties() and IApplicationInstance.getProperties() collections -->
