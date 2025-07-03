@@ -49,7 +49,7 @@ For more details about HLS interstitials, see [Getting Started with HLS Intersti
 </Module>
 ```
 
-5. Add the following property to the **HTTPStreamer > Properties** block in the Application.xml file:
+5. Add the following property to the `HTTPStreamer > Properties` block in the Application.xml file:
 
 ```xml
 <Property>
@@ -88,7 +88,7 @@ A JSON object can be passed into the video stream using the properties outlined 
 
 ## Examples and demo
 
-After building the module, start Wowza Streaming Engine and Wowza Streaming Engine Manager using the docker-compose.yaml file in this repository. It includes a pre-configured Wowza Streaming Engine instance and sample **live** and **simu-live** applications.
+After building the module, start Wowza Streaming Engine and Wowza Streaming Engine Manager using the docker-compose.yaml file in this repository. It includes a pre-configured Wowza Streaming Engine instance and sample `live` and `simu-live` applications.
 
 1. Run the following command:
 
@@ -96,7 +96,7 @@ After building the module, start Wowza Streaming Engine and Wowza Streaming Engi
 docker compose up
 ```
 
-2. Insert an HLS interstitial for the **simu-live** application with a 10 second ad break, five seconds from now:
+2. Insert an HLS interstitial for the `simu-live` application with a 10 second ad break, five seconds from now:
 
 ```shell
 curl -X POST  -H "Content-Type: application/json"  -d '{
