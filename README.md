@@ -13,13 +13,13 @@ For more details about HLS interstitials, see [Getting Started with HLS Intersti
 ## Build instructions
 
 1. Clone this repository to your local filesystem.
-1. Update the `wseLibDir` variable in the `gradle.properties` file to point to the local Wowza Streaming Engine `lib` folder.
-1. Run `./gradlew build` to build the jar file.
+2. Update the `wseLibDir` variable in the `gradle.properties` file to point to the local Wowza Streaming Engine `lib` folder.
+3. Run `./gradlew build` to build the jar file.
 
 ## Install
 
 1. Copy `wse-plugin-cloud-interstitials-rest-api-x.x.x.jar` into the `lib` directory.
-1. Add the HTTPProvider to `VHost.xml`:
+2. Add the HTTPProvider to `VHost.xml`:
 
 ```xml
 <HTTPProvider>
@@ -29,7 +29,7 @@ For more details about HLS interstitials, see [Getting Started with HLS Intersti
 </HTTPProvider>
 ```
 
-1. Add the following property to `VHost.xml`:
+3. Add the following property to `VHost.xml`:
 
 ```xml
 <Property>
@@ -39,7 +39,7 @@ For more details about HLS interstitials, see [Getting Started with HLS Intersti
 </Property>
 ```
 
-1. Add the following module to the Application.xml:
+4. Add the following module to the Application.xml:
 
 ```xml
 <Module>
@@ -49,7 +49,7 @@ For more details about HLS interstitials, see [Getting Started with HLS Intersti
 </Module>
 ```
 
-1. Add the following property to the **HTTPStreamer > Properties** block in the Application.xml file:
+5. Add the following property to the **HTTPStreamer > Properties** block in the Application.xml file:
 
 ```xml
 <Property>
@@ -96,7 +96,7 @@ After building the module, start Wowza Streaming Engine and Wowza Streaming Engi
 docker compose up
 ```
 
-1. Insert an HLS interstitial for the **simu-live** application with a 10 second ad break, five seconds from now:
+2. Insert an HLS interstitial for the **simu-live** application with a 10 second ad break, five seconds from now:
 
 ```shell
 curl -X POST  -H "Content-Type: application/json"  -d '{
@@ -107,13 +107,13 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
   }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
 ```
 
-1. To test playback, go to:
+3. To test playback, go to:
 
 ```text
 https://hlsjs.video-dev.org/demo/?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8
 ```
 
-1. To view the HLS interstitial in the HLS manifest, run:
+4. To view the HLS interstitial in the HLS manifest, run:
 
 ```bash
 curl http://localhost/simu-live/myStream/chunklist_w2003968828.m3u8
