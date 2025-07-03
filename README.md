@@ -78,13 +78,13 @@ A JSON object can be passed into the video stream using the properties outlined 
 
 | Property        | Description                                                              |
 | :-------------- | :----------------------------------------------------------------------- |
-| `id`            | Specify and identifier to use for the ad.                                |
-| `start_date`    | Define an absolute start date in ISO8601 format, or +seconds from now.   |
-| `duration`      | Specify duration for the ad.                                             |
-| `asset_list`    | Define a URL for an assets list.                                         |
-| `asset_uri`     | Define a URL for a single asset.                                         |
-| `resume_offset` | Specify seconds to offset resume.                                        |
-| `restrict`      | SKIP,JUMP                                                                |
+| `id`            | Specify and identifier to use for the ad. Default "ad1"                  |
+| `start_date`    | Define an absolute start date in ISO8601 format, or +seconds from now.  Default current time  |
+| `duration`      | Specify duration for the ad.  Default 30                                 |
+| `asset_list`    | Define a URL for an assets list. If not defined, must have asset_uri     |
+| `asset_uri`     | Define a URL for a single asset. If not defined, must have asset_list    |
+| `resume_offset` | Where primary playback should resume following the playback of the interstitial. Default 0         |
+| `restrict`      | List of Navigation Restriction.  Default SKIP,JUMP                       |
 
 ## Examples and demo
 
