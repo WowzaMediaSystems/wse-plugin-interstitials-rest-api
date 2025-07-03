@@ -78,8 +78,8 @@ A JSON object can be passed into the video stream using the properties outlined 
 
 | Property        | Description                                                              |
 | :-------------- | :----------------------------------------------------------------------- |
-| `id`            | Specify and identifier to use for the ad. Default "ad1"                  |
-| `start_date`    | Define an absolute start date in ISO8601 format, or +seconds from now.  Default current time  |
+| `id`            | Specify an identifier to use for the ad. Default value is `ad1`.         |
+| `start_date`    | Define an absolute start date in ISO8601 format, or +seconds from now. Defaults to the current time. |
 | `duration`      | Specify duration for the ad.  Default 30                                 |
 | `asset_list`    | Define a URL for an assets list. If not defined, must have asset_uri     |
 | `asset_uri`     | Define a URL for a single asset. If not defined, must have asset_list    |
