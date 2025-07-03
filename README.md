@@ -1,30 +1,36 @@
-# Wowza HLS Interstitials REST API 
-The **HLS Interstitials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to add HLS Interstitials with a REST api to a live video feed by adding the #EXT-DATE-RANGE tag to the HLS manifest.
+# Wowza Streaming Engine HLS interstitials REST API
 
-For more details on HLS Interstitials see: [Getting Started with HLS Interstitials](https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf)
+The **HLS Interstitials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine) enables you to add HLS Interstitials with a REST API to a live video feed by adding the #EXT-DATE-RANGE tag to the HLS manifest.
+
+For more details about HLS interstitials, see [Getting Started with HLS Interstitials](https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf).
 
 ## Prerequisites
-* Wowza Streaming Engine™ 4.9.4 or later is required.
-* Java 21.
-* Gradle (to build).
+
+* Wowza Streaming Engine™ 4.9.4 or later is required
+* Java 21
+* Gradle (to build)
 
 ## Build instructions
-* Clone repo to local filesystem.
-* Update `wseLibDir` variable in the `gradle.properties` file to point to local _Wowza Streaming Engine_ `lib` folder.
-* Run `./gradlew build` to build the jar file.
+
+1. Clone this repository to your local filesystem.
+1. Update the `wseLibDir` variable in the `gradle.properties` file to point to the local Wowza Streaming Engine `lib` folder.
+1. Run `./gradlew build` to build the jar file.
 
 ## Install
-* Copy `wse-plugin-cloud-interstitials-rest-api-x.x.x.jar` into lib directory 
-* Add HTTPProvider to `VHost.xml`
-```xml
 
+1. Copy `wse-plugin-cloud-interstitials-rest-api-x.x.x.jar` into the `lib` directory.
+1. Add the HTTPProvider to `VHost.xml`:
+
+```xml
 <HTTPProvider>
     <BaseClass>com.wowza.wms.plugin.interstitialsrestapi.http.HTTPProviderInterstitialsRestApi</BaseClass>
     <RequestFilters>v1/interstitials/*</RequestFilters>
     <AuthenticationMethod>none</AuthenticationMethod>
 </HTTPProvider>
-```  
-* Add Property to `VHost.xml`
+```
+
+1. Add the following property to `VHost.xml`:
+
 ```xml
 <Property>
     <Name>optionsCORSHeadersAddMain</Name>
@@ -32,7 +38,9 @@ For more details on HLS Interstitials see: [Getting Started with HLS Interstitia
     <Type>String</Type>
 </Property>
 ```
-* Add module to each application xml:
+
+1. Add the following module to the Application.xml:
+
 ```xml
 <Module>
     <Name>ModuleInterstitialsRestApi</Name>
@@ -40,7 +48,9 @@ For more details on HLS Interstitials see: [Getting Started with HLS Interstitia
     <Class>com.wowza.wms.plugin.interstitialsrestapi.module.ModuleInterstitialsRestApi</Class>
 </Module>
 ```
-* Add HLS datetime to HTTPStreamer Properties in each application xml
+
+1. Add the following property to the **HTTPStreamer > Properties** block in the Application.xml file:
+
 ```xml
 <Property>
     <Name>cupertinoEnableProgramDateTime</Name>
@@ -49,35 +59,44 @@ For more details on HLS Interstitials see: [Getting Started with HLS Interstitia
 </Property>
 ```
 
-## API
-### API patterns is
+## API details
+
+### API pattern
+
 * `/v1/interstitials/applications/{appName}/streams/{streamName}`
 
+### API supported methods
 
-### API supports methods/verbs
-`POST DELETE`
+* `POST`
+* `DELETE`
 
-### Metadata 
-A json object can be passed into the video stream 
+### Metadata
+
+A JSON object can be passed into the video stream using the properties outlined in the following table.
+
 #### Properties
-| Property      | Description                                                   |
-|:--------------|:--------------------------------------------------------------|
-| id            | ID of the Ad                                                  |
-| start_date    | Absolute start date in ISO8601 format, or +<seconds> from now |
-| duration      | Duration of the add                                           |
-| asset_list    | url for the assets list                                            |
-| asset_uri     | url for the single assets                                            |
-| resume_offset | seconds to offset resume                                      |
-| restrict      | SKIP,JUMP                                                     |
 
+| Property        | Description                                                              |
+| :-------------- | :----------------------------------------------------------------------- |
+| `id`            | Specify and identifier to use for the ad.                                |
+| `start_date`    | Define an absolute start date in ISO8601 format, or +seconds from now.   |
+| `duration`      | Specify duration for the ad.                                             |
+| `asset_list`    | Define a URL for an assets list.                                         |
+| `asset_uri`     | Define a URL for a single asset.                                         |
+| `resume_offset` | Specify seconds to offset resume.                                        |
+| `restrict`      | SKIP,JUMP                                                                |
 
-## Examples/Demo
-After the module has been built, start WSE and WSEM with the docker compose file that includes a pre-configured WSE and sample appications `live` and `simu-live`
+## Examples and demo
 
-```
+After building the module, start Wowza Streaming Engine and Wowza Streaming Engine Manager using the docker-compose.yaml file in this repository. It includes a pre-configured Wowza Streaming Engine instance and sample **live** and **simu-live** applications.
+
+1. Run the following command:
+
+```bash
 docker compose up
 ```
-Insert an HLS Interstial (10s ad break, +5 seconds from now) to simu-live video
+
+1. Insert an HLS interstitial for the **simu-live** application with a 10 second ad break, five seconds from now:
 
 ```shell
 curl -X POST  -H "Content-Type: application/json"  -d '{
@@ -88,21 +107,23 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
   }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
 ```
 
-Test Playback (using hlsjs)
+1. To test playback, go to:
 
-```
+```text
 https://hlsjs.video-dev.org/demo/?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8
 ```
 
-See the HLS Interstial
+1. To view the HLS interstitial in the HLS manifest, run:
 
-```
+```bash
 curl http://localhost/simu-live/myStream/chunklist_w2003968828.m3u8
 ```
 
+## HLS output example
 
-## HLS Output Example
-```
+An HLS output example looks similar to:
+
+```text
 #EXTM3U 
 #EXT-X-VERSION:3 
 #EXT-X-TARGETDURATION:4 
