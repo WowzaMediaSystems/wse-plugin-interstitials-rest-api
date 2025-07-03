@@ -84,7 +84,7 @@ A JSON object can be passed into the video stream using the properties outlined 
 | `asset_list`    | Define a URL for an assets list. If not defined, must have `asset_uri`.  |
 | `asset_uri`     | Define a URL for a single asset. If not defined, must have `asset_list`. |
 | `resume_offset` | Determine when primary playback should resume following the playback of the interstitial. Default value is 0 seconds. |
-| `restrict`      | Create a list of navigation restrictions. Default value is SKIP,JUMP.    |
+| `restrict`      | Create a list of navigation restrictions. Default value is `SKIP,JUMP`.    |
 
 ## Examples and demo
 
