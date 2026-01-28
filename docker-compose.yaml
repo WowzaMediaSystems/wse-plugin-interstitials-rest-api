@@ -18,7 +18,7 @@ services:
 #            - ./wse/conf:/usr/local/WowzaStreamingEngine/conf
 #            - ./wse/content:/usr/local/WowzaStreamingEngine/content
 #            - ./wse/transcoder:/usr/local/WowzaStreamingEngine/transcoder
-            - ./conf:/usr/local/WowzaStreamingEngine/conf.addon
+            - ./wse.addon/conf:/usr/local/WowzaStreamingEngine/conf.addon
             - ./build/libs:/usr/local/WowzaStreamingEngine/lib.addon
         ports:
             - 8087:8087
