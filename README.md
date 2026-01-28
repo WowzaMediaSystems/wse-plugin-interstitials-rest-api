@@ -17,7 +17,7 @@ For more details about HLS interstitials, see [Getting Started with HLS Intersti
 
 After building the module, start Wowza Streaming Engine and Wowza Streaming Engine Manager using the docker-compose.yaml file in this repository. It includes a pre-configured Wowza Streaming Engine instance and sample `live` and `simu-live` applications.
 
-1. Run the following command to set WSE and WSEM:
+1. Run the following command to launch WSE and WSEM:
 
 ```bash
 docker compose up
