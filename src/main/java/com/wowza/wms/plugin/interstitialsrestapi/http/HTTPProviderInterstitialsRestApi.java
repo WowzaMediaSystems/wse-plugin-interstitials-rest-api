@@ -41,13 +41,7 @@ public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 		log.info("Creating HTTPProvider InterstitialsRestApi v"+ ReleaseInfo.getVersion());
 		fastDateFormat = FastDateFormat.getInstance(DATEFORMAT, SystemUtils.gmtTimeZone, Locale.US);
 	}
-	//
-//	@Override
-//	public void addCORSHeaders(IHTTPResponse ihttpResponse) {
-//		ihttpResponse.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, POST, HEAD, DELETE");
-//		super.addCORSHeaders(ihttpResponse);
-//		this
-//	}
+
 	@Override
 	public void init()
 	{
@@ -67,7 +61,6 @@ public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 		log.info("canHandle:" + retVal);
 		return retVal;
 	}
-
 
 	@Override
 	public void onHTTPRequest(IVHost ivHost, IHTTPRequest ihttpRequest, IHTTPResponse ihttpResponse) {
@@ -235,7 +228,7 @@ public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 				}
 				else
 				{
-					
+
 					startDate = fastDateFormat.parse(obj.textValue());
 				}
 			}
