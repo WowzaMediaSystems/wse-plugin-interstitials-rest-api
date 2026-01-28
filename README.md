@@ -16,7 +16,7 @@ For more details about HLS interstitials, see [Getting Started with HLS Intersti
 ## Build instructions
 
 1. Clone this repository to your local filesystem.
-2. Run `./build.sh`  This will build the module/jar file with the `wse-plugin-builder`
+2. Run `./build.sh`  This will build the module/jar file with the `wse-plugin-builder` using docker
 
 ## Run the Demo
 
