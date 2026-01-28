@@ -1,6 +1,6 @@
-# Wowza Streaming Engine HLS interstitials REST API
+# Wowza Streaming Engine Interstitials REST API Plugin
 
-With the **HLS Interstitials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine), you can use a REST API to add HLS interstitials to a live video feed by inserting an `#EXT-DATE-RANGE` tag in the HLS manifest.
+With the HLS **Interstitials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine), you can use a REST API to add HLS interstitials to a live video feed by inserting an `#EXT-DATE-RANGE` tag in the HLS manifest.
 
 This module leverages the WSE classes:
 * `HTTPProvider2Base`: support of using a REST API with engine
@@ -30,7 +30,7 @@ docker compose up
 
 2. Playback the sample video with the [Wowza Test Player](https://www.wowza.com/testplayers?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8) using this playback url `https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8`
 
-3. Insert an HLS interstitial for the `simu-live` application, stream name `myStream` with a 10 second ad break, 5 seconds from now with the follow shell/curl command:
+3. Insert an HLS interstitial tag for the `simu-live` application, stream name `myStream` with a 10 second ad break, 5 seconds from now with the follow shell/curl command:
 
 ```shell
 curl -X POST  -H "Content-Type: application/json"  -d '{
@@ -41,7 +41,7 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
   }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
 ```
 
-4. To view the HLS interstitial in the HLS manifest, run the follow shell/curl command::
+4. To view the HLS interstitial tag in the HLS manifest, run the follow shell/curl command::
 
 ```bash
 curl http://localhost/simu-live/myStream/chunklist_w2003968828.m3u8
