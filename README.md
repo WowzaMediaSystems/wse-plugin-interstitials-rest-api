@@ -23,9 +23,9 @@ After building the module, start Wowza Streaming Engine and Wowza Streaming Engi
 docker compose up
 ```
 
-2. Playback the sample video with [Wowza Test Player](https://www.wowza.com/testplayers?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8) with this playback url `https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8`
+2. Playback the sample video with the [Wowza Test Player](https://www.wowza.com/testplayers?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8) using this playback url `https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8`
 
-3. Insert an HLS interstitial for the `simu-live` application with a 10 second ad break, five seconds from now with the follow shell/curl command:
+3. Insert an HLS interstitial for the `simu-live` application, stream name `myStream` with a 10 second ad break, 5 seconds from now with the follow shell/curl command:
 
 ```shell
 curl -X POST  -H "Content-Type: application/json"  -d '{
