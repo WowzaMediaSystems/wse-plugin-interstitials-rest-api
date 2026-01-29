@@ -4,7 +4,7 @@ With the HLS **Interstitials REST API** module for [Wowza Streaming Engine™ me
 
 This module leverages the WSE classes:
 * `HTTPProvider2Base`: support of using a REST API with engine
-* `ModuleBase`: support for accessing the LiveStreamPacktizers
+* `ModuleBase`: support for accessing the LiveStreamPacketizers
 * `LiveStreamPacketizerActionNotifyBase` and `IHTTPStreamerCupertinoLivePacketizerDataHandler2` to manipulate the HLS manifest 
 
 For more details about HLS interstitials, see [Getting Started with HLS Interstitials](https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf).
