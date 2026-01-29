@@ -18,7 +18,7 @@ import com.wowza.wms.plugin.interstitialsrestapi.ReleaseInfo;
 import com.wowza.wms.stream.IMediaStream;
 import com.wowza.wms.stream.livepacketizer.ILiveStreamPacketizer;
 import com.wowza.wms.vhost.IVHost;
-import org.apache.logging.log4j.core.util.datetime.FastDateFormat;
+import org.apache.commons.lang3.time.FastDateFormat;
 
 import com.fasterxml.jackson.databind.*;
 
@@ -30,7 +30,7 @@ import java.util.concurrent.*;
 public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 {
 	public static final String DATEFORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-	public FastDateFormat fastDateFormat;
+	public static FastDateFormat fastDateFormat;
 	public int adNumber = 0;
 	Map<String,Timer> cancelDateRange = new HashMap<String, Timer>();
 	static WMSLogger log = null;
@@ -41,13 +41,7 @@ public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 		log.info("Creating HTTPProvider InterstitialsRestApi v"+ ReleaseInfo.getVersion());
 		fastDateFormat = FastDateFormat.getInstance(DATEFORMAT, SystemUtils.gmtTimeZone, Locale.US);
 	}
-	//
-//	@Override
-//	public void addCORSHeaders(IHTTPResponse ihttpResponse) {
-//		ihttpResponse.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, POST, HEAD, DELETE");
-//		super.addCORSHeaders(ihttpResponse);
-//		this
-//	}
+
 	@Override
 	public void init()
 	{
@@ -67,7 +61,6 @@ public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 		log.info("canHandle:" + retVal);
 		return retVal;
 	}
-
 
 	@Override
 	public void onHTTPRequest(IVHost ivHost, IHTTPRequest ihttpRequest, IHTTPResponse ihttpResponse) {
@@ -235,6 +228,7 @@ public class HTTPProviderInterstitialsRestApi extends HTTPProvider2Base
 				}
 				else
 				{
+
 					startDate = fastDateFormat.parse(obj.textValue());
 				}
 			}

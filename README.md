@@ -1,22 +1,57 @@
-# Wowza Streaming Engine HLS interstitials REST API
+# Wowza Streaming Engine Interstitials REST API Plugin
 
-With the **HLS Interstitials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine), you can use a REST API to add HLS interstitials to a live video feed by inserting an `#EXT-DATE-RANGE` tag in the HLS manifest.
+With the HLS **Interstitials REST API** module for [Wowza Streaming Engine™ media server software](https://www.wowza.com/products/streaming-engine), you can use a REST API to add HLS interstitials to a live video feed by inserting an `#EXT-DATE-RANGE` tag in the HLS manifest.
+
+This module leverages the WSE classes:
+* `HTTPProvider2Base`: support of using a REST API with engine
+* `ModuleBase`: support for accessing the LiveStreamPacketizers
+* `LiveStreamPacketizerActionNotifyBase` and `IHTTPStreamerCupertinoLivePacketizerDataHandler2` to manipulate the HLS manifest 
 
 For more details about HLS interstitials, see [Getting Started with HLS Interstitials](https://developer.apple.com/streaming/GettingStartedWithHLSInterstitials.pdf).
 
 ## Prerequisites
 
 * Wowza Streaming Engine™ 4.9.4 or later is required
-* Java 21
-* Gradle (to build)
 
 ## Build instructions
 
 1. Clone this repository to your local filesystem.
-2. Update the `wseLibDir` variable in the `gradle.properties` file to point to the local Wowza Streaming Engine `lib` folder.
-3. Run `./gradlew build` to build the jar file.
+2. Run `./build.sh`  This will build the module/jar file with the `wse-plugin-builder` using docker
 
-## Install
+## Run the Demo
+
+After building the module, start Wowza Streaming Engine and Wowza Streaming Engine Manager using the docker-compose.yaml file in this repository. It includes a pre-configured Wowza Streaming Engine instance and sample `live` and `simu-live` applications.
+
+1. Run the following command to launch WSE and WSEM:
+
+```bash
+docker compose up
+```
+
+2. Playback the sample video with the [Wowza Test Player](https://www.wowza.com/testplayers?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8) using this playback url `https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8`
+
+3. Insert an HLS interstitial tag for the `simu-live` application, stream name `myStream` with a 10 second ad break, 5 seconds from now with the follow shell/curl command:
+
+```shell
+curl -X POST  -H "Content-Type: application/json"  -d '{
+  "id": "ad1",
+  "start_date": "+5",
+  "duration": 10.0,
+  "asset_uri": "https://wv-cdn-00-00.flowplayer.com/7bb18344-08f9-4c1e-84a7-80c1007aa99b/cmaf/6089d839-d699-424b-b914-445152e25115/playlist.m3u8"  
+  }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
+```
+
+4. To view the HLS interstitial tag in the HLS manifest, run the following shell/curl command:
+
+```bash
+curl http://localhost/simu-live/myStream/chunklist_w2003968828.m3u8
+```
+
+
+
+
+
+## Install on existing WSE instance
 
 1. Copy `wse-plugin-cloud-interstitials-rest-api-x.x.x.jar` into the `lib` directory.
 2. Add the HTTPProvider to `VHost.xml`:
@@ -86,38 +121,6 @@ A JSON object can be passed into the video stream using the properties outlined 
 | `resume_offset` | Determine when primary playback should resume following the playback of the interstitial. Default value is 0 seconds. |
 | `restrict`      | Create a list of navigation restrictions. Default value is `SKIP,JUMP`.    |
 
-## Examples and demo
-
-After building the module, start Wowza Streaming Engine and Wowza Streaming Engine Manager using the docker-compose.yaml file in this repository. It includes a pre-configured Wowza Streaming Engine instance and sample `live` and `simu-live` applications.
-
-1. Run the following command:
-
-```bash
-docker compose up
-```
-
-2. Insert an HLS interstitial for the `simu-live` application with a 10 second ad break, five seconds from now:
-
-```shell
-curl -X POST  -H "Content-Type: application/json"  -d '{
-  "id": "ad1",
-  "start_date": "+5",
-  "duration": 10.0,
-  "asset_uri": "https://wv-cdn-00-00.flowplayer.com/7bb18344-08f9-4c1e-84a7-80c1007aa99b/cmaf/6089d839-d699-424b-b914-445152e25115/playlist.m3u8"  
-  }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
-```
-
-3. To test playback, go to:
-
-```text
-https://hlsjs.video-dev.org/demo/?src=https://wse-trial.wowza.com/simu-live/myStream/playlist.m3u8
-```
-
-4. To view the HLS interstitial in the HLS manifest, run:
-
-```bash
-curl http://localhost/simu-live/myStream/chunklist_w2003968828.m3u8
-```
 
 ## HLS output example
 
