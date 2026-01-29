@@ -41,7 +41,7 @@ curl -X POST  -H "Content-Type: application/json"  -d '{
   }' http://localhost/v1/interstitials/applications/simu-live/streams/myStream
 ```
 
-4. To view the HLS interstitial tag in the HLS manifest, run the follow shell/curl command::
+4. To view the HLS interstitial tag in the HLS manifest, run the following shell/curl command:
 
 ```bash
 curl http://localhost/simu-live/myStream/chunklist_w2003968828.m3u8
